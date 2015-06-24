@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name="rest.RestService"
+            android:name=".rest.RestService"
             android:enabled="true"
             android:exported="true" >
         </service>

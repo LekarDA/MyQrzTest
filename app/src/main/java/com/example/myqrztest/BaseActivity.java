@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.octo.android.robospice.SpiceManager;
 
-import rest.RestService;
+import com.example.myqrztest.rest.RestService;
 
 /**
  * Created by dmitriy on 21.06.15.

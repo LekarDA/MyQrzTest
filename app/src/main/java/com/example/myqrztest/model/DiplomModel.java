@@ -1,4 +1,4 @@
-package model;
+package com.example.myqrztest.model;
 
 import com.google.gson.annotations.SerializedName;
 

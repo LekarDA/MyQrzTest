@@ -1,8 +1,8 @@
-package rest;
+package com.example.myqrztest.rest;
 
 import com.octo.android.robospice.retrofit.RetrofitGsonSpiceService;
 
-import api.GitApi;
+import com.example.myqrztest.api.GitApi;
 
 /**
  * Created by dmitriy on 19.06.15.

@@ -1,4 +1,4 @@
-package adapters;
+package com.example.myqrztest.adapters;
 
 import android.content.Context;
 
@@ -12,7 +12,7 @@ import com.example.myqrztest.R;
 
 import java.util.ArrayList;
 
-import model.CountryModel;
+import com.example.myqrztest.model.CountryModel;
 
 
 /**
@@ -58,7 +58,7 @@ public class AdapterForCountries extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return getItem(position).getId();
     }
 
     @Override

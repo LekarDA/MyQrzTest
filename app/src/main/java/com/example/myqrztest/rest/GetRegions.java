@@ -1,10 +1,10 @@
-package rest;
+package com.example.myqrztest.rest;
 
 import com.google.gson.annotations.SerializedName;
 import com.octo.android.robospice.request.retrofit.RetrofitSpiceRequest;
 
-import api.GitApi;
-import model.RegionModel;
+import com.example.myqrztest.api.GitApi;
+import com.example.myqrztest.model.RegionModel;
 
 /**
  * Created by dmitriy on 22.06.15.

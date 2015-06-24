@@ -1,4 +1,4 @@
-package adapters;
+package com.example.myqrztest.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,8 @@ import com.example.myqrztest.R;
 
 import java.util.ArrayList;
 
-import fragments.Fragment2;
-import model.RegionModel;
+import com.example.myqrztest.fragments.Fragment2;
+import com.example.myqrztest.model.RegionModel;
 
 
 /**

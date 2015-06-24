@@ -1,4 +1,4 @@
-package fragments;
+package com.example.myqrztest.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,16 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import adapters.ExpandableAdapter;
-import model.RegionModel;
-import rest.GetRegions;
+import com.example.myqrztest.adapters.ExpandableAdapter;
+import com.example.myqrztest.model.RegionModel;
+import com.example.myqrztest.rest.GetRegions;
 
 import com.example.myqrztest.BaseFragment;
 import com.example.myqrztest.R;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
-import java.util.Objects;
 
 /**
  * Created by Дмитрий on 12.06.2015.

@@ -1,4 +1,4 @@
-package model;
+package com.example.myqrztest.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +9,7 @@ import java.util.Collection;
  * Created by dmitriy on 22.06.15.
  */
 public class RegionModel {
-    private int id;
+    private long id;
     @SerializedName("name")
     private String region;
 
@@ -22,14 +22,14 @@ public class RegionModel {
         this.region = region;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public static class List extends ArrayList<RegionModel> implements Collection<RegionModel> {
+    public static class List extends ArrayList<RegionModel>{
     }
 }

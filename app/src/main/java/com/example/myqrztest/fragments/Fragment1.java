@@ -1,4 +1,4 @@
-package fragments;
+package com.example.myqrztest.fragments;
 
 
 
@@ -13,14 +13,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import adapters.AdapterForCountries;
+import com.example.myqrztest.adapters.AdapterForCountries;
 import com.example.myqrztest.BaseFragment;
-import rest.GetCountries;
+import com.example.myqrztest.rest.GetCountries;
 import com.example.myqrztest.R;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
-import model.CountryModel;
+import com.example.myqrztest.model.CountryModel;
 
 
 /**

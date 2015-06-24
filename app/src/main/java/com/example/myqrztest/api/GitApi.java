@@ -1,12 +1,12 @@
-package api;
+package com.example.myqrztest.api;
 
-import rest.GetCountries;
+import com.example.myqrztest.rest.GetCountries;
 
 
-import rest.GetDiplomsByRegions;
-import rest.GetRegions;
+import com.example.myqrztest.rest.GetDiplomsByRegions;
+import com.example.myqrztest.rest.GetRegions;
+
 import retrofit.http.GET;
-import retrofit.http.Path;
 import retrofit.http.Query;
 
 
@@ -20,6 +20,6 @@ public interface GitApi {
     @GET("/reference/regions")
     public GetRegions.Response.Body getRegions();
 
-
     @GET("/awards/country")
-    public GetDiplomsByRegions.Response.Body getDiplomByRegions(@Query("cid")long cid,@Query("rid")long rid);}
+    public GetDiplomsByRegions.Response.Body getDiplomByRegions(@Query("cid") long cid, @Query("rid") long rid);
+}

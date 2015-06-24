@@ -10,14 +10,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 
-import fragments.Fragment1;
-import fragments.Fragment2;
+import com.example.myqrztest.fragments.Fragment1;
+import com.example.myqrztest.regions_and_diploms.RegionsAndDiplomsFragment;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,AdapterView.OnItemClickListener {
     private Button diplom;
     private Fragment1 fragment1;
-    private Fragment2 fragment2;
+//    private Fragment2 fragment2;
+    private RegionsAndDiplomsFragment regionsAndDiplomsFragment;
 
 
 
@@ -75,8 +76,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        fragment2 = Fragment2.newInstance(id);
-        getFragmentManager().beginTransaction().replace(R.id.frame_layout_context, fragment2)
+        regionsAndDiplomsFragment = RegionsAndDiplomsFragment.newInstance(id);
+        getFragmentManager().beginTransaction().replace(R.id.frame_layout_context, regionsAndDiplomsFragment)
                 .addToBackStack(null).commit();
        
     }
