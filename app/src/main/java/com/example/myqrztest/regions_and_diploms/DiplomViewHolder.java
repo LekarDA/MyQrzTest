@@ -31,10 +31,7 @@ public  class DiplomViewHolder extends RecyclerView.ViewHolder implements View.O
         }
 
         public void initView(DiplomModel diplom) {
-            tvName
-                    .setText(
-                            diplom
-                                    .getDiplomName());
+            tvName.setText( diplom.getDiplomName());
             rbRating.setRating(new Random().nextFloat() * 5);
             tvVeiwsCount.setText(String.valueOf(new Random().nextInt(8000)));
             SimpleDateFormat dateFormat = new SimpleDateFormat("DD.MM.yyyy");

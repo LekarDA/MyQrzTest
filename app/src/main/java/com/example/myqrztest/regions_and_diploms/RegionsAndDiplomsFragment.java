@@ -81,10 +81,16 @@ public class RegionsAndDiplomsFragment extends BaseFragment implements OnRegionC
         getRestManager().execute(new GetDiplomsByRegions.Request(mCountryId, region.getId()), new GetDiplomsByRegionsListener(region));
     }
 
+//    @Override
+//    public void onDiplomClick(DiplomDetailModel model, DiplomViewHolder holder, int position) {
+//        Toast.makeText(getActivity(),"some text from dima",Toast.LENGTH_SHORT).show();
+//        getRestManager().execute(new GetDetailDiplom.Request(model.getId()),new GetDiplomsDetailListener(model));
+//    }
+
     @Override
-    public void onDiplomClick(DiplomDetailModel model, DiplomViewHolder holder, int position) {
-        Toast.makeText(getActivity(),"some text from dima",Toast.LENGTH_SHORT).show();
-        getRestManager().execute(new GetDetailDiplom.Request(model.getId()),new GetDiplomsDetailListener(model));
+    public void onDiplomClick(DiplomModel diplom, DiplomViewHolder holder, int position) {
+        Toast.makeText(getActivity(),"some text from dima" + diplom,Toast.LENGTH_SHORT).show();
+//        getRestManager().execute(new GetDetailDiplom.Request(model.getId()),new GetDiplomsDetailListener());
     }
 
     private class GetRegionsListener implements RequestListener<RegionModel.List> {
