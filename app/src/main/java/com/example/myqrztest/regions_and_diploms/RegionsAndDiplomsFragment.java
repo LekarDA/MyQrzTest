@@ -19,7 +19,7 @@ import com.example.myqrztest.rest.GetRegions;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
-public class RegionsAndDiplomsFragment extends BaseFragment implements OnRegionClickListener {
+public class RegionsAndDiplomsFragment extends BaseFragment implements OnRegionClickListener, OnDiplomClickListener {
 
     private static final String ARG_COUNTRY_ID = "countryId";
 
@@ -57,6 +57,7 @@ public class RegionsAndDiplomsFragment extends BaseFragment implements OnRegionC
         rvList.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvList.setAdapter(mAdapter);
         mAdapter.setOnRegionClickListener(this);
+        mAdapter.setOnDiplomClickListener(this);
     }
 
     @Override
@@ -73,6 +74,11 @@ public class RegionsAndDiplomsFragment extends BaseFragment implements OnRegionC
         holder.setLoading(true);
 //        Toast.makeText(getActivity(), "mCountryId "+ mCountryId+", region.getId()"+region.getId(), Toast.LENGTH_SHORT).show();
         getRestManager().execute(new GetDiplomsByRegions.Request(mCountryId, region.getId()), new GetDiplomsByRegionsListener(region));
+    }
+
+    @Override
+    public void onDiplomClick(DiplomModel model, DiplomViewHolder holder, int position) {
+        Toast.makeText(getActivity(),"some text from dima",Toast.LENGTH_SHORT).show();
     }
 
     private class GetRegionsListener implements RequestListener<RegionModel.List> {

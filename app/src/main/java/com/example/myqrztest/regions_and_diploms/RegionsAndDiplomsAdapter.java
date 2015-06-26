@@ -1,25 +1,18 @@
 package com.example.myqrztest.regions_and_diploms;
 
-import android.graphics.Region;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
 import java.util.TreeMap;
 
 import com.example.myqrztest.R;
 import com.example.myqrztest.model.DiplomModel;
 import com.example.myqrztest.model.RegionModel;
 
-public class RegionsAndDiplomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements OnRegionClickListener {
+public class RegionsAndDiplomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements OnRegionClickListener,OnDiplomClickListener {
 
     private static final int REGION_VIEW_TYPE = 1;
     private static final int DIPLOM_VIEW_TYPE = 2;
@@ -31,6 +24,7 @@ public class RegionsAndDiplomsAdapter extends RecyclerView.Adapter<RecyclerView.
 
     private LayoutInflater mInflater;
     private OnRegionClickListener onRegionClickListener;
+    private OnDiplomClickListener onDiplomClickListener;
 
     public RegionsAndDiplomsAdapter(LayoutInflater inflater) {
         mInflater = inflater;
@@ -71,7 +65,10 @@ public class RegionsAndDiplomsAdapter extends RecyclerView.Adapter<RecyclerView.
                 regionViewHolder.setOnRegionClickListener(this);
                 return regionViewHolder;
             case DIPLOM_VIEW_TYPE:
-                return new DiplomViewHolder(mInflater.inflate(R.layout.item_diplom, parent, false));
+                view = mInflater.inflate(R.layout.item_diplom, parent, false);
+                DiplomViewHolder diplomViewHolder = new DiplomViewHolder(view);
+                diplomViewHolder.setOnDiplomClickListener(this);
+                return diplomViewHolder;//new DiplomViewHolder(mInflater.inflate(R.layout.item_diplom, parent, false));
             default:
                 return null;
         }
@@ -135,11 +132,20 @@ public class RegionsAndDiplomsAdapter extends RecyclerView.Adapter<RecyclerView.
         onRegionClickListener = listener;
     }
 
+    public void setOnDiplomClickListener(OnDiplomClickListener listener){
+        onDiplomClickListener = listener;
+    }
+
     @Override
     public void onRegionClick(RegionModel regionModel, RegionViewHolder holder, int position) {
         RegionModel region = getRegion(position);
         if (onRegionClickListener != null)
             onRegionClickListener.onRegionClick(region, holder, position);
         collapseRegion();
+    }
+
+    @Override
+    public void onDiplomClick(DiplomModel model, DiplomViewHolder holder, int position) {
+
     }
 }
