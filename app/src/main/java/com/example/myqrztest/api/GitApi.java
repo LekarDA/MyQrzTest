@@ -1,8 +1,10 @@
 package com.example.myqrztest.api;
 
+import com.example.myqrztest.model.DiplomDetailModel;
 import com.example.myqrztest.rest.GetCountries;
 
 
+import com.example.myqrztest.rest.GetDetailDiplom;
 import com.example.myqrztest.rest.GetDiplomsByRegions;
 import com.example.myqrztest.rest.GetRegions;
 
@@ -22,4 +24,7 @@ public interface GitApi {
 
     @GET("/awards/country")
     public GetDiplomsByRegions.Response.Body getDiplomByRegions(@Query("cid") long cid, @Query("rid") long rid);
+
+    @GET("/awards/view")
+    public DiplomDetailModel getDiplomDetail(@Query("id") long id);
 }

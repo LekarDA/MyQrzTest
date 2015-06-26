@@ -1,5 +1,6 @@
 package com.example.myqrztest.regions_and_diploms;
 
+import com.example.myqrztest.model.DiplomDetailModel;
 import com.example.myqrztest.model.DiplomModel;
 
 /**

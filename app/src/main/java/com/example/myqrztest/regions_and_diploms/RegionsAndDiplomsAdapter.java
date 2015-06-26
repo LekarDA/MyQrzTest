@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 import com.example.myqrztest.R;
+import com.example.myqrztest.model.DiplomDetailModel;
 import com.example.myqrztest.model.DiplomModel;
 import com.example.myqrztest.model.RegionModel;
 
@@ -91,6 +92,11 @@ public class RegionsAndDiplomsAdapter extends RecyclerView.Adapter<RecyclerView.
             return mDiploms.get(mExpandedRegion.getId()).get(position - mRegions.indexOf(mExpandedRegion) - 1);
     }
 
+  /*  public DiplomDetailModel getDiplomDetail(int position){
+
+     return new DiplomDetailModel();
+    }*/
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
@@ -146,6 +152,8 @@ public class RegionsAndDiplomsAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public void onDiplomClick(DiplomModel model, DiplomViewHolder holder, int position) {
-
+        DiplomModel diplom = getDiplom(position);
+        if(onDiplomClickListener != null)
+            onDiplomClickListener.onDiplomClick(diplom, holder, position);
     }
 }

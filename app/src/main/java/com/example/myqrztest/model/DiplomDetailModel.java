@@ -3,7 +3,7 @@ package com.example.myqrztest.model;
 /**
  * Created by dmitriy on 26.06.15.
  */
-public class DiplomDetail {
+public class DiplomDetailModel {
 
     private int award_type;
 

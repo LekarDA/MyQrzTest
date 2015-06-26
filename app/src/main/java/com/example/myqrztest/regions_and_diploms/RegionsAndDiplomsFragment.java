@@ -1,6 +1,8 @@
 package com.example.myqrztest.regions_and_diploms;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,8 +14,11 @@ import android.widget.Toast;
 
 import com.example.myqrztest.BaseFragment;
 import com.example.myqrztest.R;
+import com.example.myqrztest.fragments.Fragment3DetailDiplom;
+import com.example.myqrztest.model.DiplomDetailModel;
 import com.example.myqrztest.model.DiplomModel;
 import com.example.myqrztest.model.RegionModel;
+import com.example.myqrztest.rest.GetDetailDiplom;
 import com.example.myqrztest.rest.GetDiplomsByRegions;
 import com.example.myqrztest.rest.GetRegions;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -77,8 +82,9 @@ public class RegionsAndDiplomsFragment extends BaseFragment implements OnRegionC
     }
 
     @Override
-    public void onDiplomClick(DiplomModel model, DiplomViewHolder holder, int position) {
+    public void onDiplomClick(DiplomDetailModel model, DiplomViewHolder holder, int position) {
         Toast.makeText(getActivity(),"some text from dima",Toast.LENGTH_SHORT).show();
+        getRestManager().execute(new GetDetailDiplom.Request(model.getId()),new GetDiplomsDetailListener(model));
     }
 
     private class GetRegionsListener implements RequestListener<RegionModel.List> {
@@ -111,6 +117,31 @@ public class RegionsAndDiplomsFragment extends BaseFragment implements OnRegionC
         public void onRequestSuccess(DiplomModel.List diplomModels) {
             mAdapter.expandRegion(mRegion, diplomModels);
 //            Toast.makeText(getActivity(), "diplomModels " + diplomModels, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class GetDiplomsDetailListener implements RequestListener<DiplomDetailModel> {
+        private DiplomDetailModel mModel;
+        public GetDiplomsDetailListener(DiplomDetailModel model) {
+        mModel= model;
+        }
+
+        @Override
+        public void onRequestFailure(SpiceException spiceException) {
+            Toast.makeText(getActivity(), "failure", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onRequestSuccess(DiplomDetailModel diplomDetailModel) {
+
+            Fragment3DetailDiplom fragment3DetailDiplom = new Fragment3DetailDiplom();
+            Bundle bundle =  new Bundle();
+            bundle.putString(fragment3DetailDiplom.TITLE, mModel.getName());
+            bundle.putString(fragment3DetailDiplom.DESCRIPTION, mModel.getDescription());
+            fragment3DetailDiplom.setArguments(bundle);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_regions_and_diploms_rvList, fragment3DetailDiplom).addToBackStack(null).commit();
+
         }
     }
 }
